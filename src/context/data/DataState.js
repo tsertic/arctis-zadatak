@@ -26,7 +26,14 @@ const DataState = props => {
     if (date) {
       date = `?date=${formatDate(date)}`;
     }
-    const res = await axios.get(`/${curr}/${date}`);
+    let res;
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+      // dev code
+      res = await axios.get(`/${curr}/${date}`);
+    } else {
+      // production code
+      res = await axios.get(`http://hnbex.eu/api/v1/rates/${curr}/${date}`);
+    }
 
     changeCurrency(curr);
     dispatch({ type: dataTypes.LOAD_DATA, payload: res.data });
@@ -38,7 +45,14 @@ const DataState = props => {
     date = state.currentDate
   ) => {
     const dateUrl = `?from=${formatDate(date)}&to=${formatDate(date)}`;
-    const res = await axios.get(`/${curr}/${dateUrl}`);
+    let res;
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+      // dev code
+      res = await axios.get(`/${curr}/${dateUrl}`);
+    } else {
+      // production code
+      res = await axios.get(`http://hnbex.eu/api/v1/rates/${curr}/${dateUrl}`);
+    }
     changeCurrency(curr);
     dispatch({ type: dataTypes.LOAD_DATA, payload: res.data });
   };
@@ -48,8 +62,14 @@ const DataState = props => {
     curr = state.currentCurr,
     subtractNumber = state.lastXDays
   ) => {
-    const res = await axios.get(`/${curr}/`);
-
+    let res;
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+      // dev code
+      res = await axios.get(`/${curr}/`);
+    } else {
+      // production code
+      res = await axios.get(`http://hnbex.eu/api/v1/rates/${curr}/`);
+    }
     const lastXDays = res.data.slice(-subtractNumber);
     const organizedGraphData = organizeGraphData(lastXDays);
     changeCurrency(curr);
