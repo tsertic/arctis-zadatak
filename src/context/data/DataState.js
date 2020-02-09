@@ -31,8 +31,10 @@ const DataState = props => {
       // dev code
       res = await axios.get(`/${curr}/${date}`);
     } else {
+      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+      const targetUrl = `http://hnbex.eu/api/v1/rates/${curr}/${date}`;
       // production code
-      res = await axios.get(`http://hnbex.eu/api/v1/rates/${curr}/${date}`);
+      res = await axios.get(proxyUrl + targetUrl);
     }
 
     changeCurrency(curr);
@@ -51,7 +53,9 @@ const DataState = props => {
       res = await axios.get(`/${curr}/${dateUrl}`);
     } else {
       // production code
-      res = await axios.get(`http://hnbex.eu/api/v1/rates/${curr}/${dateUrl}`);
+      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+      const targetUrl = `http://hnbex.eu/api/v1/rates/${curr}/${dateUrl}`;
+      res = await axios.get(proxyUrl + targetUrl);
     }
     changeCurrency(curr);
     dispatch({ type: dataTypes.LOAD_DATA, payload: res.data });
@@ -68,7 +72,9 @@ const DataState = props => {
       res = await axios.get(`/${curr}/`);
     } else {
       // production code
-      res = await axios.get(`http://hnbex.eu/api/v1/rates/${curr}/`);
+      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+      const targetUrl = `http://hnbex.eu/api/v1/rates/${curr}/`;
+      res = await axios.get(proxyUrl + targetUrl);
     }
     const lastXDays = res.data.slice(-subtractNumber);
     const organizedGraphData = organizeGraphData(lastXDays);
