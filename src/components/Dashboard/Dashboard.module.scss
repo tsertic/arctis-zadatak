@@ -1,0 +1,9 @@
+.Dashboard {
+  width: 50%;
+}
+
+@media (max-width: 930px) {
+  .Dashboard {
+    width: 100%;
+  }
+}

@@ -1,0 +1,48 @@
+.Filter {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  form {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+
+  form input,
+  form select {
+    margin: 0 30px 0 10px;
+  }
+  .Filter__btn {
+    position: absolute;
+    right: 35px;
+    top: 8px;
+    padding: 2px 10px;
+    cursor: pointer;
+    justify-self: end;
+  }
+
+  .Filter__btn__clear {
+    position: absolute;
+    bottom: -30px;
+    right: 35px;
+    padding: 2px 10px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 440px) {
+  .Filter {
+    margin: 40px 0;
+
+    .Filter__btn {
+      top: 40px;
+    }
+    .Filter__btn__clear {
+      left: 20px;
+    }
+  }
+}

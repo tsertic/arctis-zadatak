@@ -1,0 +1,53 @@
+.UserInformation {
+  width: 70%;
+  padding: 10px 20px;
+}
+
+.header {
+  color: #3d4451;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #dedede;
+
+  h1 {
+    font-weight: 300;
+  }
+  .header__title {
+    font-weight: normal;
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 2px 0;
+  }
+}
+
+.list {
+  list-style: none;
+  width: 100%;
+}
+.listField {
+  width: 100%;
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+.infoQ {
+  display: block;
+  width: 30%;
+  color: #333333;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+.infoA {
+  display: block;
+  width: 60%;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #9da0a7;
+}
