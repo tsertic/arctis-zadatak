@@ -13,7 +13,6 @@ export const formatDate = date => {
 
 //organize graph data
 //take array of objects for each day, return object with organized data for showing
-
 export const organizeGraphData = dataList => {
   const dates = [];
   const median = [];
@@ -34,4 +33,14 @@ export const organizeGraphData = dataList => {
     selling,
     raw: dataList
   };
+};
+
+//extract all available currencies codes and put them in list
+
+export const extractAvailableCurrencies = dataList => {
+  const currencies = [];
+
+  dataList.forEach(data => currencies.push(data.currency_code));
+
+  return currencies;
 };

@@ -30,7 +30,7 @@ const DataContent = () => {
 
   return (
     <div className={styles.DataContent}>
-      {/* if nothing is filtred it load table with all currency data on current date,
+      {/* if nothing is filtred it will load table with all currency data on current date,
           else load selected currency data  */}
       {currentCurr === 'daily' ? (
         <AllCurrencyTable />
@@ -39,7 +39,7 @@ const DataContent = () => {
           <SingleCurrencyTable
             exchangeData={exchangeData}
             currency={currentCurr}
-            title={`Exchange rates of ${currentCurr}`}
+            title={`${currentCurr} exchange rate to HRK `}
           />
           <div className={styles.dataVisualization}>
             <div className={styles.chartOptions}>

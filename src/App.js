@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './App.module.scss';
 //components
 import Dashboard from './components/Dashboard/Dashboard';

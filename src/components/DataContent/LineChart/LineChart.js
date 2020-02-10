@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './LineChart.module.scss';
 import { Line } from 'react-chartjs-2';
+import PropTypes from 'prop-types';
 
 const LineChart = props => {
   const { graphData } = props;
@@ -97,6 +98,10 @@ const LineChart = props => {
       <Line data={data} options={lineOptions} />
     </div>
   );
+};
+
+LineChart.propTypes = {
+  graphData: PropTypes.object.isRequired
 };
 
 export default LineChart;

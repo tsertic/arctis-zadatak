@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './SingleCurrencyTable.module.scss';
+import PropTypes from 'prop-types';
 
 const SingleCurrencyTable = props => {
   const { exchangeData, currency, title } = props;
@@ -35,6 +36,12 @@ const SingleCurrencyTable = props => {
       </table>
     </section>
   );
+};
+
+SingleCurrencyTable.propTypes = {
+  exchangeData: PropTypes.array.isRequired,
+  currency: PropTypes.string.isRequired,
+  title: PropTypes.string
 };
 
 export default SingleCurrencyTable;

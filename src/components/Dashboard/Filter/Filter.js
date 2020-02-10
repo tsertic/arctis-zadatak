@@ -11,10 +11,12 @@ const Filter = () => {
     loadSingleCurrencyData,
     loadGraphData,
     loadData,
-    currentCurr
+    currentCurr,
+    availableCurrencies,
+    changeLastXDays
   } = dataContext;
 
-  const [currency, setCurrency] = useState('EUR');
+  const [currency, setCurrency] = useState('AUD');
   const [startDate, setStartDate] = useState(new Date());
 
   //at submit we load two sets of data, on for currency at selected day
@@ -26,29 +28,26 @@ const Filter = () => {
     loadGraphData(currency);
   };
 
+  //reset data to all currencies,current day and set graph data to show last seven days
   const resetFilter = () => {
+    changeLastXDays(7);
     loadData('daily', new Date());
   };
+
+  //render currencies codes
+  const currCode = availableCurrencies.map((currency, i) => {
+    return (
+      <option value={currency} key={i}>
+        {currency}
+      </option>
+    );
+  });
+
   return (
     <div className={styles.Filter}>
       <form onSubmit={handleFormSubmit}>
         <span>Currency </span>
-        <select onChange={e => setCurrency(e.target.value)}>
-          <option value="EUR">EUR</option>
-          <option value="USD">USD</option>
-          <option value="AUD">AUD</option>
-          <option value="CAD">CAD</option>
-          <option value="CZK">CZK</option>
-          <option value="DKK">DKK</option>
-          <option value="HUF">HUF</option>
-          <option value="JPY">JPY</option>
-          <option value="NOK">NOK</option>
-          <option value="SEK">SEK</option>
-          <option value="CHF">CHF</option>
-          <option value="GBP">GBP</option>
-          <option value="BAM">BAM</option>
-          <option value="PLN">PLN</option>
-        </select>
+        <select onChange={e => setCurrency(e.target.value)}>{currCode}</select>
 
         <span>On Date </span>
         <DatePicker
@@ -58,10 +57,15 @@ const Filter = () => {
           maxDate={new Date()}
         />
 
-        <button className={styles.Filter__btn}>Filter</button>
+        <button className={[styles.Filter__btn, styles.btn__filter].join(' ')}>
+          Filter
+        </button>
       </form>
       {currentCurr !== 'daily' && (
-        <button className={styles.Filter__btn__clear} onClick={resetFilter}>
+        <button
+          className={[styles.Filter__btn, styles.btn__clear].join(' ')}
+          onClick={resetFilter}
+        >
           Clear
         </button>
       )}

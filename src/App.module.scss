@@ -1,5 +1,6 @@
 .App {
   margin: 0 auto;
+  padding-top: 20px;
   max-width: 1200px;
   min-height: 100vh;
   display: flex;
@@ -7,6 +8,7 @@
 
 @media (max-width: 930px) {
   .App {
+    padding-top: 6px;
     flex-direction: column;
   }
 }

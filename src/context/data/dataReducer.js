@@ -17,6 +17,11 @@ export default (state, action) => {
         ...state,
         currentCurr: action.payload
       };
+    case dataTypes.LOAD_AVAILABLE_CURRENCIES:
+      return {
+        ...state,
+        availableCurrencies: action.payload
+      };
     case dataTypes.CHANGE_LAST_X_DAYS:
       return {
         ...state,

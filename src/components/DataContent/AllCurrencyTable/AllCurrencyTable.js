@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 
 import DataContext from '../../../context/data/dataContext';
 
-const AllCurrencyTable = props => {
+const AllCurrencyTable = () => {
   //context
   const dataContext = useContext(DataContext);
   const { exchangeData, loadData } = dataContext;
